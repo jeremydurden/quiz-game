@@ -4,7 +4,11 @@ function Main() {
   return (
     <main className="main--container">
       <Question />
-      <button className="main--button"></button>
+      <Question />
+      <Question />
+      <Question />
+      <Question />
+      <button className="main--button">Check Answers</button>
     </main>
   );
 }

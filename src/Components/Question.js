@@ -1,11 +1,16 @@
 function Question() {
   return (
     <div className="question--container">
-      <h2 className="question--question">Question:</h2>
-      <div className="question--answer">A</div>
-      <div className="question--answer">B</div>
-      <div className="question--answer">C</div>
-      <div className="question--answer">D</div>
+      <h2 className="question--question">
+        Which best selling toy of 1983 caused hysteria, resulting in riots
+        breaking in stores?
+      </h2>
+      <div className="question--answer-container">
+        <div className="question--answer">Cabbage Patch Kids</div>
+        <div className="question--answer">Transformers</div>
+        <div className="question--answer">Care Bears</div>
+        <div className="question--answer">Rubik's Cube</div>
+      </div>
     </div>
   );
 }
