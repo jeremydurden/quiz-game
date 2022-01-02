@@ -4,14 +4,47 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   font-family: "Karla", sans-serif;
+  line-height: 1.5;
 }
 
-h1 {
-  font-size: 3.2rem;
+.welcome--container {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  background: rgba(245, 247, 251, 1);
+  width: auto;
+}
+
+.welcome--title {
+  color: rgba(41, 50, 100, 1);
+  font-weight: 700;
+  font-size: 1.9375rem;
+  line-height: 2.3125rem;
+}
+
+.welcome--sub-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.1875rem;
+  margin: 0.5rem 0rem 1.8125rem 0rem;
+}
+
+.welcome--button {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.1875rem;
+  width: 12.063rem;
+  height: 3.25rem;
+  color: rgba(245, 247, 251, 1);
+  background: rgba(77, 91, 158, 1);
+  border-radius: 1rem;
+  border: 0.0625rem solid rgba(77, 91, 158, 1);
 }
