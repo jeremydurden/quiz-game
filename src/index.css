@@ -55,15 +55,22 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  min-width: 80%;
+  width: 100%;
+}
+
+.question--container {
+  width: 80%;
+  background-color: lightcoral;
 }
 
 .question--answer-container {
   display: flex;
   justify-content: space-between;
-  margin-right: 15rem;
+  max-width: 50%;
 }
 
-.question--question {
+.question--h2 {
   font-family: "Karla", sans-serif;
   font-weight: 700;
   font-size: 1rem;
