@@ -61,6 +61,8 @@ body {
 
 .question--container {
   width: 80%;
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid #dbdef0;
 }
 
 .question--answer-container {
@@ -84,10 +86,12 @@ body {
   text-align: center;
   font-size: 0.625rem;
   line-height: 0.75rem;
-
+  text-align: center;
   border: 0.0625rem solid rgba(77, 91, 158, 1);
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.25rem 1rem;
+  margin-right: 1rem;
+  white-space: nowrap;
 }
 
 .main--button {
