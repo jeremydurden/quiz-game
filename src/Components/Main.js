@@ -4,19 +4,12 @@ import Question from "./Question";
 function Main() {
   const [data, setData] = useState([]);
   const [answers, setAnswers] = useState([]);
-  const [run, setRun] = useState(false);
 
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then((res) => res.json())
       .then((data) => setData(data.results));
-  }, [run]);
-
-  const questionArray = data.map((result, index) => {
-    return (
-      <Question key={index} question={result.question} answers={answers} />
-    );
-  });
+  }, []);
 
   const answersArray = [];
 
@@ -38,8 +31,6 @@ function Main() {
 
   const finalAnswers = arraySplit(flatAnswersArray);
 
-  console.log(finalAnswers);
-
   const finalAnswersObjects = finalAnswers.map((group) => {
     return group.map((answer, index) => {
       if (index === 0) {
@@ -58,11 +49,21 @@ function Main() {
 
   useEffect(() => {
     setAnswers(finalAnswersObjects);
-  }, []);
+  }, [data]);
+
+  const questionArray = data.map((result, index) => {
+    return (
+      <Question
+        key={index}
+        question={result.question}
+        answers={answers[index]}
+      />
+    );
+  });
 
   return (
     <main className="main--container">
-      {questionArray ? questionArray : "loading"}
+      {questionArray}
       <button className="main--button">Check Answers</button>
     </main>
   );
