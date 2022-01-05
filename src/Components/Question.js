@@ -1,9 +1,5 @@
-import { useEffect } from "react";
-
 function Question({ question }) {
-  const questions = question.question
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'");
+  const questions = question.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
 
   const styles = {
     selected: {
