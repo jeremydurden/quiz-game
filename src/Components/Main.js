@@ -13,12 +13,16 @@ function Main() {
 
   const answersArray = [];
 
+  //the answers that come back from the data are split up so you get 1 correct answer seperately from 3 incorrect answers
+  //this loops over the data and puts all of the answers into one array w/ the correct answer followed by an array of 3 incorrect answers
   data.forEach((result) => {
     answersArray.push(result.correct_answer, result.incorrect_answers);
   });
 
+  //This flattens the array so that the incorrect answers are no longer nested
   const flatAnswersArray = answersArray.flat();
 
+  //this function splits the flattened array so that the correct answer is put into a nested array w/ its matching incorrect answers
   function arraySplit(flatAnswersArray) {
     let array = [];
     array.push(flatAnswersArray.slice(0, 4));
@@ -31,17 +35,22 @@ function Main() {
 
   const finalAnswers = arraySplit(flatAnswersArray);
 
+  //This nests over each array and changes the items in the array to objects—the zero index is always the correct answer
   const finalAnswersObjects = finalAnswers.map((group) => {
     return group.map((answer, index) => {
       if (index === 0) {
         return {
           answer: answer,
+          selected: true,
           correct: true,
+          id: index.toString(),
         };
       } else {
         return {
           answer: answer,
+          selected: false,
           correct: false,
+          id: index.toString(),
         };
       }
     });
@@ -51,12 +60,27 @@ function Main() {
     setAnswers(finalAnswersObjects);
   }, [data]);
 
+  function selectAnswer(event, id) {
+    setAnswers((prevAnswers) => {
+      console.log(prevAnswers.length, "pa");
+      return prevAnswers.map((answer, index) => {
+        console.log(answer, "answer");
+        console.log(answer.id, "answer.id");
+        console.log(answer.length, "answer.length");
+        return answer.id === id
+          ? { ...answer, selected: !answer.selected }
+          : answer;
+      });
+    });
+  }
+
   const questionArray = data.map((result, index) => {
     return (
       <Question
         key={index}
         question={result.question}
         answers={answers[index]}
+        selectAnswer={selectAnswer}
       />
     );
   });
