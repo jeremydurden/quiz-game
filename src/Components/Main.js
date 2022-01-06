@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 function Main() {
   const [questions, setQuestions] = useState([]);
 
+  // Uses the Durstenfeld Shuffle algorithm to mix the answers array
   function mixAnswers(questionList) {
     for (let i = questionList.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -13,6 +14,8 @@ function Main() {
     return questionList;
   }
 
+  //creates an array of objects for each possible answer — passes in the correct answer as a secondary argument
+  //to check against the mixed array and assign that object w/ a true value in 'inCorrect'
   function collectAnswers(answersArray, correctAnswer) {
     return answersArray.map((answer) => {
       return {
@@ -24,6 +27,8 @@ function Main() {
     });
   }
 
+  //gets called during the fetch command when setting the 'questions' state
+  //maps over the data and changes each question to an object
   function getNewQuestions(data) {
     const newQuestions = data.map((question) => {
       return {
@@ -39,6 +44,7 @@ function Main() {
     return newQuestions;
   }
 
+  //fetches data from the API
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then((res) => res.json())
@@ -46,8 +52,16 @@ function Main() {
       .catch((error) => console.log(error));
   }, []);
 
+  //creates an array of Question components
   const questionArray = questions.map((question) => {
-    return <Question key={question.id} question={question.question} />;
+    return (
+      <Question
+        key={question.id}
+        question={question.question}
+        correctAnswer={question.correctAnswer}
+        answers={question.answers}
+      />
+    );
   });
 
   return (
