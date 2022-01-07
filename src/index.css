@@ -59,6 +59,13 @@ body {
   width: 100%;
 }
 
+.main--checked {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .question--container {
   width: 80%;
   padding-bottom: 1rem;
@@ -72,6 +79,15 @@ body {
 }
 
 .question--h2 {
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.125rem;
+
+  margin-bottom: 1rem;
+}
+
+.main--score {
   font-family: "Karla", sans-serif;
   font-weight: 700;
   font-size: 1rem;

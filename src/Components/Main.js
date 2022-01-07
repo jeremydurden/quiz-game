@@ -100,6 +100,13 @@ function Main({ tryAgain }) {
     );
   }
 
+  //maps over questions, then maps over answers and creates an new array to hold the newly checked answers
+  //first checks if and answer is selected and if so, is it incorrect -- if so, it updates the properties on the answer object
+  //then checks if the answer is selected and if so, is it correct --  if so, it updates the score and then updates the properties on the answer object
+  //otherwise it just returns the answer saying it is checked
+
+  //returns the question objects w/ the answers array updated to the new checked answers array
+  //sets the checked state to true to display the score and reset button
   function checkAnswers() {
     setQuestions((prevQuestions) =>
       prevQuestions.map((question) => {
@@ -150,8 +157,8 @@ function Main({ tryAgain }) {
         ""
       )}
       {checked ? (
-        <div>
-          <div className="score">You got {score / 2}/5 correct!</div>{" "}
+        <div className="main--checked">
+          <div className="main--score">You got {score / 2}/5 correct!</div>{" "}
           <button className="main--button" onClick={reset}>
             try again?
           </button>
