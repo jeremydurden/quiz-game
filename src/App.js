@@ -7,7 +7,6 @@ function App() {
   const [startQuiz, setStartQuiz] = useState(false);
 
   function quizButton() {
-    console.log("start quiz");
     setStartQuiz(true);
   }
 

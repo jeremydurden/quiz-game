@@ -19,7 +19,7 @@ function Main() {
   function collectAnswers(answersArray, correctAnswer) {
     return answersArray.map((answer) => {
       return {
-        isHeld: false,
+        isSelected: false,
         isCorrect: answer === correctAnswer ? true : false,
         answer: answer,
         id: nanoid(),
@@ -53,16 +53,35 @@ function Main() {
   }, []);
 
   //creates an array of Question components
-  const questionArray = questions.map((question) => {
+  const questionArray = questions.map((question, index) => {
     return (
       <Question
         key={question.id}
+        id={question.id}
         question={question.question}
         correctAnswer={question.correctAnswer}
         answers={question.answers}
+        selectAnswer={selectAnswer}
       />
     );
   });
+
+  function selectAnswer(questionId, answerId) {
+    setQuestions((prevQuestion) =>
+      prevQuestion.map((question) => {
+        if (question.id === questionId) {
+          let answersArray = question.answers.map((answer) => {
+            return answer.id === answerId
+              ? { ...answer, isSelected: !answer.isSelected }
+              : answer;
+          });
+          return { ...question, answers: answersArray };
+        } else {
+          return question;
+        }
+      })
+    );
+  }
 
   return (
     <main className="main--container">
