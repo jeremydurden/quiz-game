@@ -66,11 +66,24 @@ function Main() {
     );
   });
 
+  // first checks that the id property on the question and the id on the question element match
+  //if they don't match it just returns the whole question
+  //if they do match:
+  //it creates an empty array and then checks the id property of the answer vs the id on the answer element
+  //if the answer id's don't match it just returns the whole answer back to the empty array
+  //otherwise, it creates a new object, uses the spread operator to spread in the old answer and updates the state of isSelected to replace the old
+  //property -- refactored to first mark all isSelected properties to false -- this prevents user from selecting more than one answer per question
+  //everything is returned as a new object w/ the questions spread in and the answer property replaced by the new answer array
+
+  //this needs to be refactored to "unselect" a previously selected answer when trying to make a decision so that the user can
+  //only select 1 answer for each question.
+
   function selectAnswer(questionId, answerId) {
-    setQuestions((prevQuestion) =>
-      prevQuestion.map((question) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((question) => {
         if (question.id === questionId) {
           let answersArray = question.answers.map((answer) => {
+            answer.isSelected = false;
             return answer.id === answerId
               ? { ...answer, isSelected: !answer.isSelected }
               : answer;
