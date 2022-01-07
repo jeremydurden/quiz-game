@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import Question from "./Question";
 import { nanoid } from "nanoid";
 
-function Main() {
+function Main({ tryAgain }) {
   const [questions, setQuestions] = useState([]);
+  const [score, setScore] = useState(0);
+  const [checked, setChecked] = useState(false);
 
   // Uses the Durstenfeld Shuffle algorithm to mix the answers array
   function mixAnswers(questionList) {
@@ -21,6 +23,9 @@ function Main() {
       return {
         isSelected: false,
         isCorrect: answer === correctAnswer ? true : false,
+        isSelectedAndCorrect: false,
+        isSelectedAndIncorrect: false,
+        isChecked: false,
         answer: answer,
         id: nanoid(),
       };
@@ -72,7 +77,7 @@ function Main() {
   //it creates an empty array and then checks the id property of the answer vs the id on the answer element
   //if the answer id's don't match it just returns the whole answer back to the empty array
   //otherwise, it creates a new object, uses the spread operator to spread in the old answer and updates the state of isSelected to replace the old
-  //property -- refactored to first mark all isSelected properties to false -- this prevents user from selecting more than one answer per question
+  //property -- refactored to check if an answer is already selected -- this prevents user from selecting more than one answer per question
   //everything is returned as a new object w/ the questions spread in and the answer property replaced by the new answer array
 
   //this needs to be refactored to "unselect" a previously selected answer when trying to make a decision so that the user can
@@ -83,8 +88,7 @@ function Main() {
       prevQuestions.map((question) => {
         if (question.id === questionId) {
           let answersArray = question.answers.map((answer) => {
-            answer.isSelected = false;
-            return answer.id === answerId
+            return answer.id === answerId || answer.isSelected
               ? { ...answer, isSelected: !answer.isSelected }
               : answer;
           });
@@ -96,10 +100,65 @@ function Main() {
     );
   }
 
+  function checkAnswers() {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((question) => {
+        const checkedAnswers = question.answers.map((answer) => {
+          if (answer.isSelected && !answer.isCorrect) {
+            return {
+              ...answer,
+              isSelectedAndIncorrect: true,
+              isChecked: true,
+            };
+          } else if (answer.isSelected && answer.isCorrect) {
+            setScore((prevScore) => prevScore + 1);
+            return {
+              ...answer,
+              isSelectedAndCorrect: true,
+              isChecked: true,
+            };
+          } else {
+            return {
+              ...answer,
+              isChecked: true,
+            };
+          }
+        });
+        return {
+          ...question,
+          answers: checkedAnswers,
+        };
+      })
+    );
+    setChecked(true);
+  }
+
+  function reset() {
+    setScore(0);
+    tryAgain();
+  }
+  console.log(score);
+  console.log(questions);
   return (
     <main className="main--container">
       {questionArray}
-      <button className="main--button">Check Answers</button>
+      {!checked ? (
+        <button onClick={checkAnswers} className="main--button">
+          Check Answers
+        </button>
+      ) : (
+        ""
+      )}
+      {checked ? (
+        <div>
+          <div className="score">You got {score / 2}/5 correct!</div>{" "}
+          <button className="main--button" onClick={reset}>
+            try again?
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </main>
   );
 }

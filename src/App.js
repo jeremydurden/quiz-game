@@ -10,7 +10,19 @@ function App() {
     setStartQuiz(true);
   }
 
-  return <>{!startQuiz ? <Welcome quizButton={quizButton} /> : <Main />}</>;
+  function tryAgain() {
+    setStartQuiz(false);
+  }
+
+  return (
+    <>
+      {!startQuiz ? (
+        <Welcome quizButton={quizButton} />
+      ) : (
+        <Main tryAgain={tryAgain} />
+      )}
+    </>
+  );
 }
 
 export default App;

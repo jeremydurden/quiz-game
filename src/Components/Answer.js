@@ -1,5 +1,5 @@
 function Answer(props) {
-  const answers = props.answer.answer
+  const answers = props.answer
     .replace(/&quot;/g, '"')
     .replace(/&#039;/g, "'")
     .replace(/&amp;/g, "&")
@@ -7,7 +7,8 @@ function Answer(props) {
     .replace(/&aacute;/g, "á")
     .replace(/&eacute;/g, "é")
     .replace(/&atilde;/g, "ã")
-    .replace(/&ndash;/g, "-");
+    .replace(/&ndash;/g, "-")
+    .replace(/&ntilde;/g, "ñ");
 
   const styles = {
     selected: {

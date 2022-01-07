@@ -9,14 +9,18 @@ function Question(props) {
     .replace(/&aacute;/g, "á")
     .replace(/&eacute;/g, "é")
     .replace(/&atilde;/g, "ã")
-    .replace(/&ndash;/g, "-");
+    .replace(/&ndash;/g, "-")
+    .replace(/&ntilde;/g, "ñ");
 
   const answers = props.answers.map((answer) => {
     return (
       <Answer
-        answer={answer}
+        answer={answer.answer}
         isCorrect={answer.isCorrect}
         isSelected={answer.isSelected}
+        isSelectedAndCorrect={answer.isSelectedAndCorrect}
+        isSelectedAndIncorrect={answer.isSelectedAndIncorrect}
+        isChecked={answer.isChecked}
         id={answer.id}
         key={answer.id}
         questionId={props.id}
