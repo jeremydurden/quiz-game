@@ -10,7 +10,8 @@ function Answer(props) {
     .replace(/&ndash;/g, "-")
     .replace(/&ntilde;/g, "ñ")
     .replace(/&ocirc;/g, "ô")
-    .replace(/&rsquo;/g, "'");
+    .replace(/&rsquo;/g, "'")
+    .replace(/&uuml;/g, "ü");
 
   const styles = {
     selected: {

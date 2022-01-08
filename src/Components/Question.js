@@ -10,7 +10,8 @@ function Question(props) {
     .replace(/&eacute;/g, "é")
     .replace(/&atilde;/g, "ã")
     .replace(/&ndash;/g, "-")
-    .replace(/&ntilde;/g, "ñ");
+    .replace(/&ntilde;/g, "ñ")
+    .replace(/&uuml;/g, "ü");
 
   const answers = props.answers.map((answer) => {
     return (
