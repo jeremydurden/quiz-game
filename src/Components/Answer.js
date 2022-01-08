@@ -11,11 +11,13 @@ function Answer(props) {
     .replace(/&ntilde;/g, "ñ")
     .replace(/&ocirc;/g, "ô")
     .replace(/&rsquo;/g, "'")
-    .replace(/&uuml;/g, "ü");
+    .replace(/&uuml;/g, "ü")
+    .replace(/&uacute;/g, "ú");
 
   const styles = {
     selected: {
       background: "rgba(214, 219, 245, 1)",
+      borderColor: "rgba(214, 219, 245, 1)",
     },
     notSelected: {
       background: "white",
