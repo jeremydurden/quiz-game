@@ -67,6 +67,7 @@ function Main({ tryAgain }) {
         correctAnswer={question.correctAnswer}
         answers={question.answers}
         selectAnswer={selectAnswer}
+        finalScoreCheck={checked}
       />
     );
   });

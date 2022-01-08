@@ -25,6 +25,7 @@ function Question(props) {
         key={answer.id}
         questionId={props.id}
         selectAnswer={props.selectAnswer}
+        finalScoreCheck={props.finalScoreCheck}
       />
     );
   });

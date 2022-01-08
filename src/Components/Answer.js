@@ -8,7 +8,9 @@ function Answer(props) {
     .replace(/&eacute;/g, "é")
     .replace(/&atilde;/g, "ã")
     .replace(/&ndash;/g, "-")
-    .replace(/&ntilde;/g, "ñ");
+    .replace(/&ntilde;/g, "ñ")
+    .replace(/&ocirc;/g, "ô")
+    .replace(/&rsquo;/g, "'");
 
   const styles = {
     selected: {
@@ -17,11 +19,31 @@ function Answer(props) {
     notSelected: {
       background: "white",
     },
+    selectedWrongAnswer: props.isSelected
+      ? { background: "rgba(248, 188, 188, 1)" }
+      : props.isCorrect
+      ? { background: "rgba(148, 215, 162, .5)" }
+      : { background: "white", opacity: ".5" },
+    selectedCorrectAnswer: props.isSelected
+      ? {
+          background: "rgba(148, 215, 162, 1)",
+        }
+      : { color: "red" },
   };
+
+  console.log(props.answer, props.isCorrect);
 
   return (
     <p
-      style={props.isSelected ? styles.selected : styles.notSelected}
+      style={
+        props.finalScoreCheck
+          ? props.isSelected && props.isCorrect
+            ? styles.selectedCorrectAnswer
+            : styles.selectedWrongAnswer
+          : props.isSelected
+          ? styles.selected
+          : styles.notSelected
+      }
       onClick={() => props.selectAnswer(props.questionId, props.id)}
       className="answer--answer"
     >
