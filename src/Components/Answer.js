@@ -26,8 +26,9 @@ function Answer(props) {
         }
       : props.isCorrect
       ? {
-          background: "rgba(148, 215, 162, .5)",
-          borderColor: "rgba(148, 215, 162, .5)",
+          background: "rgba(148, 215, 162, 1)",
+          borderColor: "rgba(148, 215, 162, 1)",
+          opacity: ".5",
         }
       : { background: "white", opacity: ".5" },
     selectedCorrectAnswer: props.isSelected
@@ -35,7 +36,7 @@ function Answer(props) {
           background: "rgba(148, 215, 162, 1)",
           borderColor: "rgba(148, 215, 162, 1)",
         }
-      : { color: "red" },
+      : {},
   };
 
   console.log(props.answer, props.isCorrect);
