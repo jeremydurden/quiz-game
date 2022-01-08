@@ -20,13 +20,20 @@ function Answer(props) {
       background: "white",
     },
     selectedWrongAnswer: props.isSelected
-      ? { background: "rgba(248, 188, 188, 1)" }
+      ? {
+          background: "rgba(248, 188, 188, 1)",
+          borderColor: "rgba(248, 188, 188, 1)",
+        }
       : props.isCorrect
-      ? { background: "rgba(148, 215, 162, .5)" }
+      ? {
+          background: "rgba(148, 215, 162, .5)",
+          borderColor: "rgba(148, 215, 162, .5)",
+        }
       : { background: "white", opacity: ".5" },
     selectedCorrectAnswer: props.isSelected
       ? {
           background: "rgba(148, 215, 162, 1)",
+          borderColor: "rgba(148, 215, 162, 1)",
         }
       : { color: "red" },
   };
