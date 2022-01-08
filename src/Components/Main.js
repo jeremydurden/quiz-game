@@ -159,7 +159,7 @@ function Main({ tryAgain }) {
       )}
       {checked ? (
         <div className="main--checked">
-          <div className="main--score">You got {score / 2}/7 correct!</div>{" "}
+          <div className="main--score">You got {score}/7 correct!</div>{" "}
           <button className="main--button" onClick={reset}>
             try again?
           </button>
