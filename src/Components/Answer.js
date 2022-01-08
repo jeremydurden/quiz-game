@@ -12,7 +12,9 @@ function Answer(props) {
     .replace(/&ocirc;/g, "ô")
     .replace(/&rsquo;/g, "'")
     .replace(/&uuml;/g, "ü")
-    .replace(/&uacute;/g, "ú");
+    .replace(/&uacute;/g, "ú")
+    .replace(/&pi;/g, "π")
+    .replace(/&aring;/g, "å");
 
   const styles = {
     selected: {

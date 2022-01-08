@@ -12,7 +12,9 @@ function Question(props) {
     .replace(/&ndash;/g, "-")
     .replace(/&ntilde;/g, "ñ")
     .replace(/&uuml;/g, "ü")
-    .replace(/&uacute;/g, "ú");
+    .replace(/&uacute;/g, "ú")
+    .replace(/&pi;/g, "π ")
+    .replace(/&aring;/g, "å");
 
   const answers = props.answers.map((answer) => {
     return (
