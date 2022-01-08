@@ -47,6 +47,7 @@ body {
   background: rgba(77, 91, 158, 1);
   border-radius: 1rem;
   border: 0.0625rem solid rgba(77, 91, 158, 1);
+  cursor: pointer;
 }
 
 .main--container {
