@@ -51,7 +51,7 @@ function Main({ tryAgain }) {
 
   //fetches data from the API
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+    fetch("https://opentdb.com/api.php?amount=7&type=multiple")
       .then((res) => res.json())
       .then((data) => setQuestions(getNewQuestions(data.results)))
       .catch((error) => console.log(error));
@@ -159,7 +159,7 @@ function Main({ tryAgain }) {
       )}
       {checked ? (
         <div className="main--checked">
-          <div className="main--score">You got {score / 2}/5 correct!</div>{" "}
+          <div className="main--score">You got {score / 2}/7 correct!</div>{" "}
           <button className="main--button" onClick={reset}>
             try again?
           </button>

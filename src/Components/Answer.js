@@ -26,8 +26,8 @@ function Answer(props) {
         }
       : props.isCorrect
       ? {
-          background: "rgba(148, 215, 162, 1)",
-          borderColor: "rgba(148, 215, 162, 1)",
+          background: "rgba(148, 215, 162, 1.1)",
+          borderColor: "rgba(148, 215, 162, 1.1)",
           opacity: ".5",
         }
       : { background: "white", opacity: ".5" },
