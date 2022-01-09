@@ -7,7 +7,7 @@ function App() {
   const [startQuiz, setStartQuiz] = useState(false);
   const [formData, setFormData] = useState({
     questionCount: 5,
-    category: "general knowledge",
+    category: "9",
     difficulty: "easy",
   });
 
