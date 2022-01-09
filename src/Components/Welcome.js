@@ -1,14 +1,19 @@
-function Welcome({ quizButton }) {
+function Welcome({ handleSubmit, formData, handleFormData }) {
   return (
     <div className="welcome--container">
       <h1 className="welcome--title">Quizzical</h1>
       <h3 className="welcome--sub-title">
         Welcome! What sort of quiz would you like to take?
       </h3>
-      <form className="welcome--formContainer" action="">
+      <form className="welcome--formContainer" onSubmit={handleSubmit}>
         <div className="welcome--genre">
           <label htmlFor="genre">Genre</label>
-          <select name="genre" id="genre">
+          <select
+            name="category"
+            id="genre"
+            value={formData.category}
+            onChange={handleFormData}
+          >
             <option value="9">General Knowledge</option>
             <option value="10">Books</option>
             <option value="11">Film</option>
@@ -33,30 +38,36 @@ function Welcome({ quizButton }) {
             <option value="30">Gadgets</option>
             <option value="31">Anime & Manga</option>
             <option value="32">Cartoons</option>
-            <option value="">Mixed Genres</option>
           </select>
         </div>
         <div className="welcome--difficulty">
           <label htmlFor="difficulty">Difficulty</label>
-          <select name="difficulty" id="difficulty">
-            <option value="9">Easy</option>
-            <option value="9">Medium</option>
-            <option value="9">Difficult</option>
-            <option value="9">Mixed Difficulty</option>
+          <select
+            name="difficulty"
+            id="difficulty"
+            value={formData.difficulty}
+            onChange={handleFormData}
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="difficult">Difficult</option>
           </select>
         </div>
         <div className="welcome--numberOfQuestions">
-          <label htmlFor="numberOfQuestions">Number of Questions</label>
-          <select name="numberOfQuestions" id="number">
-            <option value="9">5</option>
-            <option value="9">10</option>
-            <option value="9">20</option>
+          <label htmlFor="questionCount">Number of Questions</label>
+          <select
+            name="questionCount"
+            id="questionCount"
+            value={formData.questionCount}
+            onChange={handleFormData}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
           </select>
         </div>
+        <button className="welcome--button">Start Quiz</button>
       </form>
-      <button onClick={quizButton} className="welcome--button">
-        Start Quiz
-      </button>
     </div>
   );
 }

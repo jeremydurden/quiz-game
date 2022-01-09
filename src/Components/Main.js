@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Question from "./Question";
 import { nanoid } from "nanoid";
 
-function Main({ tryAgain }) {
+function Main({ tryAgain, formData }) {
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [checked, setChecked] = useState(false);
@@ -31,7 +31,7 @@ function Main({ tryAgain }) {
       };
     });
   }
-
+  console.log(formData.questionCount);
   //gets called during the fetch command when setting the 'questions' state
   //maps over the data and changes each question to an object
   function getNewQuestions(data) {
@@ -49,9 +49,11 @@ function Main({ tryAgain }) {
     return newQuestions;
   }
 
+  let fetchQuestionGenreDifficulty = `https://opentdb.com/api.php?amount=${formData.questionCount}&category=${formData.category}&difficulty=${formData.difficulty}&type=multiple`;
   //fetches data from the API
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=7&type=multiple")
+    fetch(fetchQuestionGenreDifficulty)
+      .then(console.log(formData, "form data"))
       .then((res) => res.json())
       .then((data) => setQuestions(getNewQuestions(data.results)))
       .catch((error) => console.log(error));
@@ -145,8 +147,6 @@ function Main({ tryAgain }) {
     setScore(0);
     tryAgain();
   }
-  console.log(score);
-  console.log(questions);
   return (
     <main className="main--container">
       {questionArray}
@@ -159,7 +159,9 @@ function Main({ tryAgain }) {
       )}
       {checked ? (
         <div className="main--checked">
-          <div className="main--score">You got {score}/7 correct!</div>{" "}
+          <div className="main--score">
+            You got {score}/{formData.questionCount} correct!
+          </div>{" "}
           <button className="main--button" onClick={reset}>
             try again?
           </button>

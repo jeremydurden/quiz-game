@@ -6,9 +6,9 @@ import Main from "./Components/Main";
 function App() {
   const [startQuiz, setStartQuiz] = useState(false);
   const [formData, setFormData] = useState({
-    questionCount: 1,
-    category: "",
-    difficulty: "",
+    questionCount: 5,
+    category: "general knowledge",
+    difficulty: "easy",
   });
 
   function handleFormData(event) {
@@ -17,8 +17,10 @@ function App() {
     });
   }
 
-  function quizButton() {
+  function handleSubmit(event) {
+    event.preventDefault();
     setStartQuiz(true);
+    console.log(formData);
   }
 
   function tryAgain() {
@@ -29,12 +31,12 @@ function App() {
     <>
       {!startQuiz ? (
         <Welcome
-          quizButton={quizButton}
+          handleSubmit={handleSubmit}
           formData={formData}
           handleFormData={handleFormData}
         />
       ) : (
-        <Main tryAgain={tryAgain} />
+        <Main tryAgain={tryAgain} formData={formData} />
       )}
     </>
   );
