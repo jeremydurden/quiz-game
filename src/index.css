@@ -26,6 +26,7 @@ body {
   font-weight: 700;
   font-size: 1.9375rem;
   line-height: 2.3125rem;
+  margin-bottom: 0.625rem;
 }
 
 .welcome--sub-title {
@@ -48,6 +49,58 @@ body {
   border-radius: 1rem;
   border: 0.0625rem solid rgba(77, 91, 158, 1);
   cursor: pointer;
+}
+
+.welcome--formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2.625rem;
+  height: 30vh;
+  font-size: 1.2rem;
+  font-weight: 300;
+  width: 20%;
+}
+
+.welcome--formContainer select {
+  cursor: pointer;
+  padding: 0.25rem 0.225rem 0.25rem 0.625rem;
+  color: rgba(245, 247, 251, 1);
+  background: rgba(77, 91, 158, 1);
+  border-radius: 0.625rem;
+  margin-left: auto;
+  border: 1px solid rgba(77, 91, 158, 1);
+}
+
+.welcome--genre {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: right;
+  width: 100%;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.welcome--numberOfQuestions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: right;
+  width: 100%;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.welcome--difficulty {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: right;
+  width: 100%;
+  line-height: 26px;
+  margin-bottom: 10px;
 }
 
 .main--container {

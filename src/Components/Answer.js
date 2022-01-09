@@ -44,8 +44,6 @@ function Answer(props) {
       : {},
   };
 
-  console.log(props.answer, props.isCorrect);
-
   return (
     <p
       style={
